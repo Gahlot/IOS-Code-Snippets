@@ -1,4 +1,25 @@
 # IOS Code Snippets
+## To get Class Name 
+To do this write a extension for NSObject class
+```swift
+
+extension NSObject {
+    class var name: String {
+        return String(describing: self)
+    }
+    
+    var name: String {
+        return String(describing: self)
+    }
+}
+
+```
+To print class name(let say of class ImageViewCell) we have to write:
+```swift
+
+print(ImageViewCell.name)
+
+```
 
 ## Manage The Keyboard
 
@@ -25,6 +46,30 @@
         tableView.scrollIndicatorInsets = insets
         
     }
+
+```
+## Show only bottom border of textField
+To this simply add below extension for UITextField class.
+
+```swift
+
+extension UITextField {
+    func setBottomBorder() {
+        self.borderStyle = .none
+        self.layer.backgroundColor = UIColor.white.cgColor
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        self.layer.shadowOpacity = 0.4
+        self.layer.shadowRadius = 0.0
+    }
+}
+
+```
+for set only bottom border we have to call setBottomBorder() function on textField Object(let say numberTextField: UITextField).
+```swift
+
+numberTextField.setBottomBorder()
 
 ```
 
