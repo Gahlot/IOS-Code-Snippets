@@ -58,21 +58,25 @@ func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange
     }
    
 ```
-##### NOTE
+#### NOTE
 When image is selected from camera we have to check is cmera Hardware is present or not(in case when we test app in simulator where no camera Harware is present) otherewise app can crash if there is no camera hardware.
 we can check it by adding a simple line in our code:
 ```swift
+
 let isCamerePresent: Bool = UIImagePickerController.isSourceTypeAvailable(.camera)
+
 ```
 This return **True** if camera hardware is present otherwise false.
 
 #### Get selected image from Image Picker Controller 
 To get The selected Image we have to use UIImagePickerController delegate method imagePickerController(_ picker: , didFinishPickingMediaWithInfo info:).
 ```swift
+
 func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image:UIImage = (info[UIImagePickerControllerEditedImage] as? UIImage){
             self.imageView.image = image	//set image for imageView
             self.dismiss(animated: true, completion: nil)
         }
 }
+
 ```
