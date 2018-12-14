@@ -11,9 +11,9 @@
 
 
 @objc func keyboardWillShow( notification :NSNotification ) {
-        if let newFrame = (notification.userInfo?[ UIKeyboardFrameEndUserInfoKey ] as? NSValue)?.cgRectValue {
+        if let keyboardFrame = (notification.userInfo?[ UIKeyboardFrameEndUserInfoKey ] as? NSValue)?.cgRectValue {
             var insets: UIEdgeInsets
-            insets =  UIEdgeInsetsMake( 0, 0, newFrame.height, 0 )
+            insets =  UIEdgeInsetsMake( 0, 0, keyboardFrame.height, 0 )
             tableView.contentInset = insets
             tableView.scrollIndicatorInsets = insets
         }
@@ -42,4 +42,37 @@ func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange
         return false
 }
 
+```
+### Apply ImagePicker
+
+```swift
+
+//MARK: - Apply Image picker when button is click whose Action function is pickAnImage(_ Sender:) 
+ @IBAction func pickAnImage(_ sender: UIBarButtonItem) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .photoLibrary  //image is selected from gallary
+	//imagePickerController.sourceType = .camera      //image is selected from camera
+        imagePickerController.allowsEditing = true
+        imagePickerController.delegate = self
+        self.present(imagePickerController, animated: true, completion: nil)
+    }
+   
+```
+##### NOTE
+When image is selected from camera we have to check is cmera Hardware is present or not(in case when we test app in simulator where no camera Harware is present) otherewise app can crash if there is no camera hardware.
+we can check it by adding a simple line in our code:
+```swift
+let isCamerePresent: Bool = UIImagePickerController.isSourceTypeAvailable(.camera)
+```
+This return **True** if camera hardware is present otherwise false.
+
+#### Get selected image from Image Picker Controller 
+To get The selected Image we have to use UIImagePickerController delegate method imagePickerController(_ picker: , didFinishPickingMediaWithInfo info:).
+```swift
+func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image:UIImage = (info[UIImagePickerControllerEditedImage] as? UIImage){
+            self.imageView.image = image	//set image for imageView
+            self.dismiss(animated: true, completion: nil)
+        }
+}
 ```
