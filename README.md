@@ -1,6 +1,6 @@
 # IOS Code Snippets
 
-### Manage The Keyboard
+## Manage The Keyboard
 
 ```swift
 //In viewdidload(){
@@ -28,7 +28,7 @@
 
 ```
 
-### Only numbers are allowed to enter in Textfeld
+## Only numbers are allowed to enter in Textfeld
 
 ```swift
 
@@ -43,7 +43,7 @@ func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange
 }
 
 ```
-### Apply ImagePicker
+## Apply ImagePicker
 
 ```swift
 
