@@ -89,7 +89,7 @@ func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange
 
 ```
 
-## Placeholde in UITextView
+## Placeholder in UITextView
 ```swift
 
 import UIKit
